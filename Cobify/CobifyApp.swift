@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct CobifyApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+//            BackendTestView()
+            RootView()
+                .preferredColorScheme(.light)
         }
     }
 }
