@@ -10,7 +10,7 @@ import Foundation
 enum MainTab: Identifiable, CaseIterable {
     case home
     case search
-    case playlists
+    case favorites
     
     var id: Self {
         self
@@ -22,7 +22,7 @@ enum MainTab: Identifiable, CaseIterable {
             return "music.note.house"
         case .search:
             return "magnifyingglass"
-        case .playlists:
+        case .favorites:
             return "heart"
         }
     }
@@ -33,8 +33,8 @@ enum MainTab: Identifiable, CaseIterable {
             return "Home"
         case .search:
             return "Search"
-        case .playlists:
-            return "Playlists"
+        case .favorites:
+            return "Favorites"
         }
     }
 }

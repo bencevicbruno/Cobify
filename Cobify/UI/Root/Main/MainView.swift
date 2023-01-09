@@ -28,7 +28,7 @@ struct MainView: View {
                 
                 FavoritesView()
                     .environmentObject(mainViewModel)
-                    .tag(MainTab.playlists)
+                    .tag(MainTab.favorites)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             
