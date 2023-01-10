@@ -20,10 +20,9 @@ final class FavoritesService: FavoritesServiceProtocol {
         print("favorites in init: \(favoriteSongIDs)")
         
         Task { @MainActor in
-            guard let userID = self.persistenceService.currentUserID else { return }
                     
             do {
-                let favorites = try await self.backend.fetchAllFavorites(userID: userID)
+                let favorites = try await self.backend.fetchAllFavorites()
                 
                 favorites.forEach {
                     self.addToFavorites(songID: $0.id)
@@ -44,11 +43,8 @@ final class FavoritesService: FavoritesServiceProtocol {
         print("favorites: \(favoriteSongIDs)")
         
         subscribersForAdded.forEach { $0(songID) }
-        
-        guard let userID = self.persistenceService.currentUserID else { return }
-        
         Task {
-            try? await self.backend.addToFavorites(userID: userID, songID: songID)
+            try? await self.backend.addToFavorites(songID: songID)
         }
     }
     
@@ -58,9 +54,8 @@ final class FavoritesService: FavoritesServiceProtocol {
         print("favorites: \(favoriteSongIDs)")
         subscribersForRemoved.forEach { $0(songID) }
         
-        guard let userID = self.persistenceService.currentUserID else { return }
         Task {
-            try? await self.backend.removeFromFavorites(userID: userID, songID: songID)
+            try? await self.backend.removeFromFavorites(songID: songID)
         }
     }
     
@@ -71,9 +66,9 @@ final class FavoritesService: FavoritesServiceProtocol {
             Task { @MainActor [weak self] in
                 do {
                     if isFavorite {
-                        try await self?.addToFavorites(songID: songID)
+                        self?.addToFavorites(songID: songID)
                     } else {
-                        try await self?.removeFromFavorites(songID: songID)
+                        self?.removeFromFavorites(songID: songID)
                     }
                     
                     mutationCompletion(isFavorite)

@@ -120,8 +120,8 @@ final class BackendAPI {
     
     // MARK: - Favorites
     
-    func fetchAllFavorites(userID: Int) async throws -> [SongResponse] {
-        let urlString = "https://\(backendID).eu.ngrok.io/api/users/\(userID)/favorites"
+    func fetchAllFavorites() async throws -> [SongResponse] {
+        let urlString = "https://\(backendID).eu.ngrok.io/api/favorites"
         
         guard let url = URL(string: urlString) else {
             throw NetworkError.badURL(url: urlString)
@@ -133,44 +133,29 @@ final class BackendAPI {
         return try await networkService.fetch(request: request)
     }
     
-    func addToFavorites(userID: Int, songID: Int) async throws {
-        let urlString = "https://\(backendID).eu.ngrok.io/api/users/\(userID)/favorites"
+    func addToFavorites(songID: Int) async throws {
+        let urlString = "https://\(backendID).eu.ngrok.io/api/favorites/\(songID)"
         
         guard let url = URL(string: urlString) else {
             throw NetworkError.badURL(url: urlString)
         }
         
-        let requestData = [[
-            "id": songID,
-        ]]
-        
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody = try JSONEncoder().encode(requestData)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        
-        print(String(data: request.httpBody!, encoding: .utf8))
         
         try await networkService.fetch(request: request)
     }
     
-    func removeFromFavorites(userID: Int, songID: Int) async throws {
-        let urlString = "https://\(backendID).eu.ngrok.io/api/users/\(userID)/favorites"
+    func removeFromFavorites(songID: Int) async throws {
+        let urlString = "https://\(backendID).eu.ngrok.io/api/favorites/\(songID)"
         
         guard let url = URL(string: urlString) else {
             throw NetworkError.badURL(url: urlString)
         }
         
-        let requestData = [[
-            "id": songID,
-        ]]
-        
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
-        request.httpBody = try JSONEncoder().encode(requestData)
-        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print(String(data: request.httpBody!, encoding: .utf8))
         
         try await networkService.fetch(request: request)
     }

@@ -22,7 +22,7 @@ final class AudioService {
     }
 
     func playFromBundle() throws -> Double {
-        let path = Bundle.main.path(forResource: "Jana_2", ofType: "mp3")!
+        let path = Bundle.main.path(forResource: "intro", ofType: "mp3")!
         let url = URL(string: path)!
         
         try audioSession.setCategory(.playback, mode: .default)

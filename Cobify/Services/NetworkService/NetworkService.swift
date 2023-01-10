@@ -45,6 +45,12 @@ final class NetworkService {
     }
     
     func fetch(request: URLRequest) async throws {
+        var request = request
+        
+        if let token = persistenceService.authToken {
+            request.setValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        }
+        
         let (data, response) = try await URLSession.shared.data(for: request)
         
         print("Got response: \(response)")
@@ -54,7 +60,7 @@ final class NetworkService {
             throw NetworkError.responseNotHTTP
         }
         
-        guard response.statusCode == 200 else {
+        guard response.statusCode == 200 || response.statusCode == 201 else {
             throw NetworkError.statusCode(code: response.statusCode)
         }
     }
