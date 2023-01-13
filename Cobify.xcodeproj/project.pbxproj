@@ -249,10 +249,10 @@
 		8C5C8F8F2948604000431BD4 /* Response */ = {
 			isa = PBXGroup;
 			children = (
-				8C35F01D294DD09100032AED /* SongResponse.swift */,
-				8C24C90C295C587800CD46C3 /* UserIDResponse.swift */,
 				8C3B9D9A29641A4B001B14A3 /* RegistrationResponse.swift */,
+				8C35F01D294DD09100032AED /* SongResponse.swift */,
 				8C24C906295C54AF00CD46C3 /* TokenResponse.swift */,
+				8C24C90C295C587800CD46C3 /* UserIDResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
