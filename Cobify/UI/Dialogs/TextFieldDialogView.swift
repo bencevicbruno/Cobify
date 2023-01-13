@@ -65,7 +65,7 @@ struct TextFieldDialogView: View {
                 
                 TextField("Tap to start typing...", text: $text)
                     .font(.title3)
-                    .fontWeight(.medium)
+//                    .fontWeight(.medium)
                     .padding(.horizontal, 12)
                     .frame(maxWidth: .infinity, height: 50)
                     .clipShape(Rectangle())

@@ -51,7 +51,7 @@ struct SplashView: View {
             
         }
         .lineLimit(1)
-        .fontWeight(.heavy)
+//        .fontWeight(.heavy)
         .foregroundColor(.cobifyOnyx)
         .frame(width: UIScreen.width * 0.7)
         .onAppear {

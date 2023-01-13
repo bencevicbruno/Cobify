@@ -18,7 +18,7 @@ final class MockSongService: SongsServiceProtocol {
     var cachedSongs: [SongModel] = .samples
     
     func fetchRecommendedSongs() async throws -> [SongModel] {
-        try await Task.sleep(for: .seconds(1))
+//        try await Task.sleep(for: .seconds(1))
         
         return .samples
     }

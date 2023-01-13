@@ -12,6 +12,7 @@ extension FileManager {
     func getPath(for file: String) -> URL {
         let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0]
         
-        return documentsDirectory.appending(path: file, directoryHint: .notDirectory)
+        return URL(string: documentsDirectory.absoluteString + file)!
+//        return documentsDirectory.appending(path: file, directoryHint: .notDirectory)
     }
 }
