@@ -28,12 +28,12 @@ struct LoginView: View {
                 VStack(spacing: 0) {
                     Text("Welcome to")
                         .lineLimit(1)
-//                        .fontWeight(.heavy)
+                        .fontWeight(.heavy)
                         .minimumScaleFactor(0.01)
                     
                     Text("COBIFY")
                         .lineLimit(1)
-//                        .fontWeight(.heavy)
+                        .fontWeight(.heavy)
                         .minimumScaleFactor(0.01)
                 }
                 .font(.system(size: 56))

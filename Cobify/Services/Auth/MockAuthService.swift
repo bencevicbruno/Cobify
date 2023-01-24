@@ -19,7 +19,7 @@ final class MockAuthService: AuthServiceProtocol {
     }
     
     func login(email: String, password: String) async throws {
-//        try await Task.sleep(for: .milliseconds(500))
+        try await Task.sleep(for: .milliseconds(500))
         
         if email == Self.validMail && password == Self.validPassword {
             persistenceService.authToken = ""
@@ -30,7 +30,7 @@ final class MockAuthService: AuthServiceProtocol {
     }
     
     func register(email: String, password: String) async throws {
-//        try await Task.sleep(for: .milliseconds(500))
+        try await Task.sleep(for: .milliseconds(500))
         
         if email == Self.validMail && password == Self.validPassword {
             persistenceService.authToken = ""
