@@ -33,6 +33,7 @@ struct MainTabBar: View {
             
             Text(tab.title)
         }
+        .fontWeight(currentTab == tab ? .medium : .regular)
         .foregroundColor(currentTab == tab ? .cobifyFireOpal : .cobifyOnyx)
         .frame(maxWidth: .infinity)
         .frame(height: Self.height)
